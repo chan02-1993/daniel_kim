@@ -1,0 +1,21 @@
+n = int(input())
+lst = list(map(int,input().split()))
+
+def func(i,j):
+    ave = 0
+    for x in range(i, j+1):
+        ave+=lst[x]
+    ave/=(j-i+1)
+
+    for y in range(i,j+1):
+        if lst[y] == ave:
+            return True
+    return False
+
+count = 0
+
+for i in range(n):
+    for j in range(i,n):
+        if func(i,j) == True:
+            count+=1
+print(count)
