@@ -1,0 +1,59 @@
+"""
+6
+E 3 5
+N 5 3
+E 4 6
+E 10 4
+N 11 2
+N 8 1
+"""
+
+n = int(input())
+lst = []
+for x in range(n):
+    lst.append(input().split())
+
+N = []
+E = []
+
+for x in range(len(lst)):
+    if lst[x][0] == 'E':
+        E.append([int(lst[x][1]),int(lst[x][2]), -1, x])
+    else:
+        N.append([int(lst[x][1]),int(lst[x][2]), -1, x])
+
+N.sort()
+E.sort(key = lambda fgh : fgh[1])
+
+ans = []
+for x in range(n):
+    ans.append("Infinity")
+
+for x in range(len(N)):
+    for y in range(len(E)):
+        if N[x][0]<E[y][0] or N[x][1]>E[y][1]:
+            print(x,y,1)
+            continue
+        if N[x][2] != -1 or E[y][2] != -1:
+            print(x,y,2)
+
+            continue
+
+        Nlen = E[y][1] - N[x][1]
+        Elen = N[x][0] - E[y][0]
+        
+        if Elen == Nlen :
+            print(x,y,4)
+
+            continue
+        
+        if Elen > Nlen:
+            ans[E[y][3]] = Elen
+        else:
+            ans[N[x][3]] = Nlen
+        print(x,y,ans)
+
+
+
+for x in range(len(ans)):
+    print(ans[x])
