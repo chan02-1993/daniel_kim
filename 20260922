@@ -1,0 +1,31 @@
+
+"""
+qazwsxedcrfvtgbyhnujmikolp
+abcde
+"""
+ab = input()
+
+inp = input()
+
+inpnum = []
+table = [-1]*26
+
+for x in range(26):
+    table[ord(ab[x]) - 97] = x
+
+
+
+for x in range(len(inp)):
+    inpnum.append(table[ord(inp[x])-97])
+
+
+count = 1
+for x in range(len(inpnum)-1):
+    if inpnum[x]>= inpnum[x+1]:
+        count+=1
+
+
+
+#fch -> 'a' -> 0 -> 1
+
+print(count)
