@@ -1,0 +1,26 @@
+"""
+7
+11 2 17 13 1 15 3
+"""
+
+n = int(input())
+eo = list(map(int, input().split()))
+even = 0
+odd = 0
+
+for x in range(len(eo)):
+    if eo[x]%2 == 0:
+        even+=1
+    else:
+        odd+=1
+
+if even == odd:
+    ans = n
+elif even>odd:
+    ans = odd*2+1
+elif odd>even:
+    ans = 2*even + (odd-even)//3*2
+    arr = [0,-1,1]
+    ans += arr[(odd-even)%3]
+
+print(ans)
