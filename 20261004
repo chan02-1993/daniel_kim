@@ -1,0 +1,14 @@
+n = int(input())
+lst1 = list(map(int, input().split()))
+lst2 = list(map(int, input().split()))
+lst1.sort()
+lst2.sort()
+
+ans = 1
+for y in range(n):
+    count = 0
+    for x in range(n):
+        if lst1[n-1-y] <= lst2[x]:
+            count+=1
+    ans*= (count-y)
+print(ans)
